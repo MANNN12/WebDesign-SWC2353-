@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SERENE COUTURE - Cart</title>
+    <link rel="stylesheet" href="css/HomePage.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+<!-- Header and Navigation -->
+<header>
+    <div class="header-container">
+        <div class="logo">
+            <span class="hamburger" onclick="toggleMenu()"><i class="fas fa-bars"></i></span> <!-- Hamburger icon -->
+            <img src="Image/logo-removebg-preview.png" width="500" height="500" alt="Logo"/>
+        </div>
+
+        <nav>
+            <ul>
+                <li><a href="homepage.html">Home</a></li>
+                <li><a href="Shop.html" onclick="toggleShopDropdown()">Shop <i class="fas fa-caret-down"></i></a>
+                    <div class="dropdown-menu" id="dropdownMenu">
+                        <ul>
+                            <li><a href="men.html">Man</a></li>
+                            <li><a href="women.html">Women</a></li>
+                            <li><a href="kids.html">Kids</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="account.html">Profile</a></li>
+                <li class="heart-icon">
+                    <a href="#" onclick="saveToHeart()"><i class="fas fa-heart"></i></a>
+                    <span class="heart-badge" id="heartBadge">0</span> <!-- Badge for heart icon -->
+                </li>
+            </ul>
+        </nav>
+        <div class="cart">
+            <a href="cart.html" onclick="addToCart('Sample Item', 50)"><i class="fas fa-shopping-bag"></i></a>
+            <span class="cart-badge" id="cartBadge">0</span> <!-- Badge for cart icon -->
+        </div>
+    </div>
+</header>
+
+<!-- Cart Section -->
+<section class="cart-section">
+    <h2>Your Cart</h2>
+    <div class="cart-items" id="cartItems">
+        <!-- Cart items will be dynamically added here -->
+    </div>
+    <div class="cart-summary">
+        <p>Total: <span id="cartTotal">RM 0.00</span></p>
+        <button onclick="proceedToCheckout()">Proceed to Checkout</button>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <p>Follow us on:</p>
+    <div class="social-media">
+        <img src="Image/OII-removebg-preview.png" width="50" height="50" alt="Fb"/>
+        <img src="Image/ig-removebg-preview (1).png" width="50" height="50" alt="Ig"/>
+    </div>
+</footer>
+
+<script>
+    // Initialize cart and heart counts
+    let heartCount = parseInt(localStorage.getItem('heartCount')) || 0;
+    updateHeartBadge();
+
+    // Function to toggle hamburger menu
+    function toggleMenu() {
+        const menu = document.getElementById('dropdownMenu');
+        menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+    }
+
+    // Function to toggle shop dropdown menu
+    function toggleShopDropdown() {
+        const shopDropdown = document.getElementById('dropdownMenu');
+        shopDropdown.style.display = shopDropdown.style.display === 'block' ? 'none' : 'block';
+    }
+
+    // Function to add items to the cart with name and price
+    function addToCart(itemName, itemPrice) {
+        // Retrieve cart items from localStorage or initialize as empty array
+        let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+
+        // Check if item already exists, if so increase quantity
+        const existingItem = cartItems.find(item => item.name === itemName);
+        if (existingItem) {
+            existingItem.quantity++;
+        } else {
+            // Add new item
+            cartItems.push({ name: itemName, price: itemPrice, quantity: 1 });
+        }
+
+        // Save updated cart to localStorage
+        localStorage.setItem('cartItems', JSON.stringify(cartItems));
+        updateCartBadge();
+        updateCartItems();
+    }
+
+    // Function to display cart items
+    function updateCartItems() {
+        const cartItemsContainer = document.getElementById('cartItems');
+        cartItemsContainer.innerHTML = ''; // Clear current items
+        const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+        let total = 0;
+
+        cartItems.forEach(item => {
+            const itemElement = document.createElement('div');
+            itemElement.classList.add('cart-item');
+            itemElement.innerHTML = `${item.name} - ${item.quantity} x RM ${item.price.toFixed(2)}`;
+            cartItemsContainer.appendChild(itemElement);
+            total += item.price * item.quantity;
+        });
+
+        // Update total amount
+        document.getElementById('cartTotal').innerText = `RM ${total.toFixed(2)}`;
+    }
+
+    // Function to update cart badge with item count
+    function updateCartBadge() {
+        const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+        const totalCount = cartItems.reduce((total, item) => total + item.quantity, 0);
+        document.getElementById('cartBadge').innerText = totalCount;
+    }
+
+    // Function to proceed to checkout (placeholder)
+    function proceedToCheckout() {
+        alert("Proceeding to checkout...");
+    }
+
+    // Function to save items to the heart
+    function saveToHeart() {
+        heartCount++;
+        localStorage.setItem('heartCount', heartCount);
+        updateHeartBadge();
+    }
+
+    // Function to update heart badge
+    function updateHeartBadge() {
+        document.getElementById('heartBadge').innerText = heartCount;
+    }
+
+    // Load cart and heart data on page load
+    window.onload = function() {
+        updateCartBadge();
+        updateCartItems();
+    }
+
+    // Close the dropdown if clicked outside
+    window.onclick = function(event) {
+        if (!event.target.matches('.hamburger') && !event.target.closest('.dropdown-menu')) {
+            const dropdowns = document.getElementsByClassName("dropdown-menu");
+            for (let i = 0; i < dropdowns.length; i++) {
+                const openDropdown = dropdowns[i];
+                if (openDropdown.style.display === 'block') {
+                    openDropdown.style.display = 'none';
+                }
+            }
+        }
+    }
+</script>
+
+</body>
+</html>

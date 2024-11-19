@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SERENE COUTURE - Shop</title>
+    <link rel="stylesheet" href="css/Shop.css">
+	<link rel="stylesheet" href="css/HomePage.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Dropdown Menu */
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            z-index: 1000;
+        }
+
+        .dropdown-menu ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .dropdown-menu ul li {
+            padding: 10px;
+        }
+
+        .dropdown-menu ul li a {
+            color: black;
+            text-decoration: none;
+        }
+
+        nav li:hover .dropdown-menu {
+            display: block;
+        }
+
+        .product-info {
+            color: black;
+            background-color: white;
+            padding: 10px;
+        }
+
+        /* Styling for product cards */
+        .product-list {
+            display: flex;
+			justify-content: space-between; /* Menggunakan space-between untuk ruang yang lebih baik */
+			flex-wrap: wrap; /* Membenarkan bungkus */
+			max-width: 1200px; /* Anda boleh tetapkan lebar maksimum jika diperlukan */
+			margin: 0 auto; 
+        }
+
+        .product-card {
+            flex: 0 1 30%; /* Setiap card akan mengambil 30% lebar parent */
+			box-sizing: border-box; /* Pastikan padding dan border tidak menambah kepada lebar */
+			margin-bottom: 20px;
+        }
+
+        .product-card:hover {
+            transform: scale(1.05);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: auto;
+            transition: transform 0.3s;
+        }
+		
+		/* Style for the search container */
+.search-container {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+	margin-left: 70px;
+}
+
+.search-container input {
+    padding: 5px;
+    border: 3px solid #ccc;
+    border-radius: 5px;
+}
+
+.search-container button {
+    background-color: white;
+    color: black;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.search-container button i {
+    font-size: 1rem;
+}
+
+.search-container button:hover {
+    background-color: #555;
+}
+		
+		/* Styling for search results */
+        .search-results {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .product-item {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+		
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="header-container">
+        <div class="logo">
+            <img src="Image/logo-removebg-preview.png" width="500" height="500" alt="Logo"/>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="Homepage.html" class="active">Home</a></li>
+                <li><a href="Shop.html">Shop</a></li>
+                <li><a href="Contact.html">Contact</a></li>
+                <li><a href="Profile.html">Profile</a></li>
+            </ul>
+        </nav>
+		
+		<div class="search-container">
+            <input type="text" id="searchInput" placeholder="Search for products..." />
+            <button onclick="searchProducts()"><i class="fas fa-search"></i></button>
+        </div>
+		
+        <div class="cart">
+            <a href="Payment.html"><i class="fas fa-shopping-bag"></i></a>
+            <span class="cart-badge" id="cartBadge">0</span>
+        </div>
+    </div>
+</header>
+
+<!-- Bar Kategori -->
+<div class="category-bar">
+    <a href="Shop.html" onclick="filterCategory('all')">New Arrivals</a>
+    <a href="Hoodies.html" class="active" onclick="filterCategory('hoodies')">Hoodies&nbsp;</a>
+    <a href="T-shirt.html" onclick="filterCategory('T-shirt')">Tees&nbsp;</a>
+    <a href="Topi.html" onclick="filterCategory('crew')">Headwear&nbsp;</a>
+	<a href="Spek.html" onclick="filterCategory('crew')">Accessories&nbsp;</a>
+</div>
+
+<section class="products">
+    <h2 style="text-align: center;">Hoodie's Collection</h2>
+    <div class="product-list">
+        <div class="product-card">
+            <img src="Image/Hoodie_Belakang.png" alt="Baju" 
+                 onmouseover="swapImage(this, 'Image/Hoodie_Depan.png')" 
+                 onmouseout="swapImage(this, 'Image/Hoodie_Belakang.png')"/>
+            <h3>RELAX HOODIE</h3>
+            <p>RM100.00</p>
+			<a href="Men3.html">
+                <button>View Detail</button>
+            </a>
+        </div>
+        <div class="product-card">
+            <img src="Image/Hoodie2_Depan.png" alt="Baju2"
+                 onmouseover="swapImage(this, 'Image/Hoodie2_Belakang.png')" 
+                 onmouseout="swapImage(this, 'Image/Hoodie2_Depan.png')"/>
+            <h3>CROWN ZIP HOODIE</h3>
+            <p>RM140.00</p>
+            <a href="Men5.html">
+                <button>View Detail</button>
+            </a>
+        </div>
+		
+      <div class="product-card">
+            <img src="Image/Hoodie3_Depan.png" alt="Card3"
+                 onmouseover="swapImage(this, 'Image/Hoodie3_Belakang.png')" 
+                 onmouseout="swapImage(this, 'Image/Hoodie3_Depan.png')"/>
+            <h3>HOODIE INTERNATIONAL</h3>
+            <p>RM150.00</p>
+            <a href="Men7.html">
+                <button>View Detail</button>
+            </a>
+        </div>
+		
+		<!-- Product Card 4 -->
+        <div class="product-card">
+            <img src="Image/Baju3_Depan.png" alt="Baju3"
+                 onmouseover="swapImage(this, 'Image/Baju3_Belakang.png')" 
+                 onmouseout="swapImage(this, 'Image/Baju3_Depan.png')"/>
+            <h3>CASUAL HOODIE</h3>
+            <p>RM75.00</p>
+            <a href="product-details.html?name=Casual%20T-Shirt&price=75">
+                <button>View Detail</button>
+            </a>
+        </div>
+		
+		<!-- Product Card 5 -->
+        <div class="product-card">
+          <img src="Image/Hoodie4_Depan.png" alt="Hoodie"
+                 onmouseover="swapImage(this, 'Image/Hoodie4_Belakang.png')" 
+                 onmouseout="swapImage(this, 'Image/Hoodie4_Depan.png')"/>
+            <h3>SATIN PATCH HOODIE</h3>
+            <p>RM155.00</p>
+            <a href="Men8.html">
+                <button>View Detail</button>
+            </a>
+        </div>
+		
+		<!-- Product Card 6 -->
+        <div class="product-card">
+          <img src="Image/Hoodie5_Depan.png" alt="Baju3"
+                 onmouseover="swapImage(this, 'Image/Hoodie5_Belakang.png')" 
+                 onmouseout="swapImage(this, 'Image/Hoodie5_Depan.png')"/>
+            <h3>HYPNOS ZIP HOODIE</h3>
+            <p>RM170.00</p>
+          <a href="product-details.html?name=Casual%20T-Shirt&price=75">
+                <button>View Detail</button>
+            </a>
+        </div>
+		
+  </div> <!-- Closing product-list div -->
+</section> <!-- Closing products section -->
+
+<script>
+    // Tukar imej apabila hover dan mouse keluar
+    function swapImage(element, newSrc) {
+        element.src = newSrc;
+    }
+
+    function updateCartBadge() {
+        let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+        const totalCount = cartItems.reduce((total, item) => total + item.quantity, 0);
+        document.getElementById('cartBadge').innerText = totalCount;
+    }
+
+    window.onload = updateCartBadge;
+
+    function toggleShopDropdown(event) {
+        event.preventDefault();
+        const dropdownMenu = document.getElementById('dropdownMenu');
+        dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
+    }
+	function updateCartBadge() {
+    const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+    const totalQuantity = cartItems.reduce((total, item) => total + item.quantity, 0);
+    document.getElementById('cartBadge').innerText = totalQuantity;
+}
+
+// Panggil fungsi ini saat halaman dimuat
+document.addEventListener('DOMContentLoaded', updateCartBadge);
+
+</script>
+</body>
+</html>

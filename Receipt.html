@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Receipt - Serene Couture</title>
+    <link rel="stylesheet" href="css/Receipt.css">
+    <link rel="stylesheet" href="css/HomePage.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+ 
+
+    <!-- Receipt Content -->
+    <div class="receipt-container">
+        <h1>Receipt</h1>
+        <p><strong>Order Number:</strong> </p>
+      <p><strong>Order Date:</strong> November 13, 2024</p>
+        
+        <table id="receiptTable">
+            <tr>
+                <th>Product</th>
+                <th>Quantity</th>
+                <th>Price</th>
+            </tr>
+            <tr class="receipt-item">
+                <td>
+                    <div class="receipt-info">
+                        <img src="Image/Baju2_Depan.png" alt="Black Work Jacket">
+                        <p>BLACK WORK JACKET STITCH</p>
+                        <small>Price: RM200.00</small>
+						<small>Size:M</small>
+                    </div>
+                </td>
+                <td>1</td>
+                <td>RM200.00</td>
+            </tr>
+        </table>
+
+        <div class="total-price">
+            <table>
+                <tr>
+                    <td>Subtotal</td>
+                    <td>RM200.00</td>
+                </tr>
+                <tr>
+                    <td>Shipping Fee</td>
+                    <td>RM10.00</td>
+                </tr>
+                <tr>
+                    <td>Total</td>
+                    <td>RM210.00</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="thank-you">
+            <p>Thank you for shopping with us! Your order will be shipped shortly.</p>
+            <a href="Homepage.html" class="btn">Back to Home</a>
+        </div>
+    </div>
+
+    <script>
+        // You can add dynamic order number and date using JavaScript if needed
+        document.addEventListener("DOMContentLoaded", function() {
+            // Example of dynamically adding order details, if required
+            const orderNumber = "12345";  // You can replace this dynamically
+            const orderDate = new Date().toLocaleDateString();  // Current date
+            document.querySelector('p strong').innerText = `#${orderNumber}`;
+            document.querySelector('p strong + span').innerText = orderDate;
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details</title>
+    <link rel="stylesheet" href="css/Men1.css">
+    <link rel="stylesheet" href="css/Homepage.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <style>
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            z-index: 1000;
+        }
+        .dropdown-menu ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .dropdown-menu li {
+            padding: 10px;
+        }
+        .dropdown-menu li a {
+            text-decoration: none;
+            color: black;
+            display: block;
+        }
+        .dropdown-menu li a:hover {
+            background-color: #f0f0f0;
+        }
+        nav {
+            position: relative;
+        }
+        .back-btn {
+            padding: 10px 20px;
+            background-color: black;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            margin-top: 20px;
+            display: inline-block;
+        }
+        .back-btn:hover {
+            background-color: #007bff;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <img src="Image/logo-removebg-preview.png" width="500" height="500" alt="Logo"/>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="Homepage.html" class="active">Home</a></li>
+                    <li>
+                        <a href="Shop.html">Shop</a>
+                    </li>
+                    <li><a href="Contact.html">Contact</a></li>
+                    <li><a href="Profile.html">Profile</a></li>
+                </ul>
+            </nav>
+            
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Search for products..." />
+                <button onclick="searchProducts()"><i class="fas fa-search"></i></button>
+            </div>
+
+            <div class="cart">
+                <a href="Payment.html"><i class="fas fa-shopping-bag"></i></a>
+                <span class="cart-badge" id="cartBadge">0</span>
+            </div>
+        </div>
+    </header>
+    
+    <button onclick="goBack()" class="back-btn">Go Back</button>
+	
+    <div class="product-details">
+        <!-- Product Image -->
+        <div class="product-image">
+            <img src="Image/Spek3_Depan.png" alt="Product Image" onmouseover="swapImage(this, 'Image/Spek3_Belakang.png')" 
+                 onmouseout="swapImage(this, 'Image/Spek3_Depan.png')"/>
+        </div>
+
+        <!-- Product Info -->
+        <div class="product-info">
+            <h2>RENE SUNGLASSES</h2>
+            <div class="product-price">RM160.00</div>
+
+            <!-- Quantity only -->
+            <div class="options-inline">
+                <label for="quantity">Quantity:</label>
+                <input type="number" id="quantity" value="1" min="1">
+            </div>
+
+            <button onclick="addToCart()">Add to Cart</button>
+        </div>
+    </div>
+	
+	<button onclick="resetCart()" class="back-btn">Reset Cart</button>
+
+    <script>
+        /// Tukar imej apabila hover dan mouse keluar
+    function swapImage(element, newSrc) {
+        element.src = newSrc;
+    }
+		
+        function goBack() {
+            window.history.back();
+        }
+
+        function addToCart() {
+            const size = document.getElementById('size').value;
+            const quantity = parseInt(document.getElementById('quantity').value, 10);
+            const price = 200.00;
+            const itemName = "BLACK WORK JACKET STITCH";
+
+            let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+
+            // Check if the item already exists in the cart
+            const existingItem = cartItems.find(item => item.name === itemName && item.size === size);
+
+            if (existingItem) {
+                // Increment quantity if the item exists
+                existingItem.quantity += quantity;
+            } else {
+                // Add new item if it doesn't exist
+                const newItem = {
+                    name: itemName,
+                    size: size,
+                    quantity: quantity,
+                    price: price
+                };
+                cartItems.push(newItem);
+            }
+
+            // Save updated cart to localStorage
+            localStorage.setItem('cartItems', JSON.stringify(cartItems));
+
+            // Update cart badge
+            updateCartBadge();
+
+            // Reset form
+            document.getElementById('size').value = 'S';
+            document.getElementById('quantity').value = 1;
+
+            alert("Item added to cart!");
+        }
+
+        function updateCartBadge() {
+            const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+            const totalQuantity = cartItems.reduce((total, item) => total + item.quantity, 0);
+            document.getElementById('cartBadge').innerText = totalQuantity;
+        }
+		
+		function resetCart() {
+		localStorage.removeItem('cartItems'); // Clear cart
+		document.getElementById('cartBadge').innerText = 0; // Reset badge
+		alert("Cart has been reset!");
+		}
+
+        // Initialize cart badge on page load
+        document.addEventListener('DOMContentLoaded', updateCartBadge);
+	</script>
+	</body>
+</html>

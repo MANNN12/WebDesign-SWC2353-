@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Track Your Order</title>
+    <link rel="stylesheet" href="css/Tracking.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+
+        /* Header Styling */
+        header {
+            background-color: #343a40;
+            color: white;
+            padding: 20px 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo img {
+            max-width: 180px;
+            height: auto;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav ul li a {
+            color: #f8f9fa;
+            text-decoration: none;
+            font-size: 16px;
+            text-transform: uppercase;
+            font-weight: bold;
+            padding: 8px;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #e63946;
+        }
+
+        .search-container input {
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
+        .search-container button {
+            background-color: #e63946;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .search-container button:hover {
+            background-color: #d62828;
+        }
+
+        /* Tracking Page Styles */
+        .container {
+            padding: 40px 20px;
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: #343a40;
+        }
+
+        .order-info {
+            background-color: #f1f1f1;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .order-id span {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .status h2 {
+            color: #28a745;
+            font-size: 24px;
+        }
+
+        .status p {
+            font-size: 16px;
+            color: #555;
+        }
+
+        .status-progress {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+
+        .status-step {
+            position: relative;
+            width: 22%;
+            text-align: center;
+            font-size: 14px;
+            padding: 10px;
+            background-color: #f1f1f1;
+            border-radius: 8px;
+            color: #777;
+        }
+
+        .status-step.active {
+            background-color: #e63946;
+            color: white;
+        }
+
+        .status-step span {
+            display: block;
+        }
+
+        .status-step::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 100%;
+            width: 20px;
+            height: 2px;
+            background-color: #e63946;
+            transform: translateY(-50%);
+        }
+
+        .status-step:last-child::after {
+            display: none;
+        }
+
+        .view-more {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background-color: #28a745;
+            color: white;
+            text-align: center;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .view-more:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <img src="Image/logo-removebg-preview.png" width="500" height="500" alt="Logo"/>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="Homepage.html" class="active">Home</a></li>
+                    <li><a href="Shop.html">Shop</a></li>
+                    <li><a href="Contact.html">Contact</a></li>
+                    <li><a href="Profile.html">Profile</a></li>
+                </ul>
+            </nav>
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Search for products..." />
+                <button onclick="searchProducts()"><i class="fas fa-search"></i></button>
+            </div>
+            <div class="cart">
+                <a href="Payment.html" onclick="addToCart()"><i class="fas fa-shopping-bag"></i></a>
+                <span class="cart-badge" id="cartBadge">0</span> <!-- Badge for cart icon -->
+            </div>
+        </div>
+    </header>
+	
+    <div class="container">
+        <header>
+            <h1>Order Tracking</h1>
+        </header>
+        
+        <section class="order-info">
+            <div class="order-id">
+                <span>Order #12345</span>
+            </div>
+            <div class="status">
+                <h2>In Transit</h2>
+                <p>Your order is on its way! Estimated delivery: 2-3 days.</p>
+            </div>
+        </section>
+
+        <section class="status-progress">
+            <div class="status-step active">
+                <span>Order Placed</span>
+                <span>10 Nov 2024</span>
+            </div>
+            <div class="status-step active">
+                <span>Shipped</span>
+                <span>11 Nov 2024</span>
+            </div>
+            <div class="status-step">
+                <span>Out for Delivery</span>
+                <span>12 Nov 2024</span>
+            </div>
+            <div class="status-step">
+                <span>Delivered</span>
+                <span>13 Nov 2024</span>
+            </div>
+        </section>
+		
+		<div class="rating-comment-section">
+    <h3>Leave a Review</h3>
+    <div class="stars" id="ratingStars">
+        <i class="fas fa-star" data-value="1"></i>
+        <i class="fas fa-star" data-value="2"></i>
+        <i class="fas fa-star" data-value="3"></i>
+        <i class="fas fa-star" data-value="4"></i>
+        <i class="fas fa-star" data-value="5"></i>
+    </div>
+    <textarea id="commentInput" placeholder="Write your comment..." rows="4"></textarea>
+    <button onclick="submitReview()">Submit Review</button>
+
+    <h3>All Reviews:</h3>
+    <div id="reviewsOutput">
+        <!-- Existing Reviews -->
+        <div class="review">
+            <p><strong>Alif</strong>: Great product! Highly recommend it.</p>
+            <div class="stars">
+                <i class="fas fa-star active"></i>
+                <i class="fas fa-star active"></i>
+                <i class="fas fa-star active"></i>
+                <i class="fas fa-star active"></i>
+                <i class="fas fa-star"></i>
+            </div>
+        </div>
+        <div class="review">
+            <p><strong>Irfan</strong>: The service was excellent, and the product quality is top-notch.</p>
+            <div class="stars">
+                <i class="fas fa-star active"></i>
+                <i class="fas fa-star active"></i>
+                <i class="fas fa-star active"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+            </div>
+        </div>
+        <div class="review">
+            <p><strong>Firdaus</strong>: Fast delivery and amazing customer support. Will buy again!</p>
+            <div class="stars">
+                <i class="fas fa-star active"></i>
+                <i class="fas fa-star active"></i>
+                <i class="fas fa-star active"></i>
+                <i class="fas fa-star active"></i>
+                <i class="fas fa-star"></i>
+            </div>
+        </div>
+    </div>
+</div>
+		</body>
+	</html>
+<script>
+	document.addEventListener('DOMContentLoaded', () => {
+    const stars = document.querySelectorAll('#ratingStars i'); // Ambil semua ikon bintang
+    const commentInput = document.getElementById('commentInput'); // Input komentar
+    const reviewsOutput = document.getElementById('reviewsOutput'); // Area output ulasan
+    const viewMoreButton = document.querySelector('.view-more'); // Tombol toggle ulasan
+    const reviewContainer = document.querySelector('.reviews'); // Kontainer ulasan tersembunyi
+    const ratingText = document.getElementById('rating-text'); // Teks rating dinamis
+    let selectedRating = 0; // Nilai rating awal
+
+    // Fungsi untuk menangani klik pada bintang
+    stars.forEach((star) => {
+        star.addEventListener('click', () => {
+            selectedRating = parseInt(star.getAttribute('data-value')); // Ambil nilai bintang
+            updateStars(selectedRating); // Perbarui tampilan bintang
+            ratingText.textContent = `Your rating: ${selectedRating}/5`; // Perbarui teks rating
+        });
+
+        // Tambahkan efek hover pada bintang
+        star.addEventListener('mouseover', () => {
+            const hoverRating = parseInt(star.getAttribute('data-value'));
+            updateStars(hoverRating, true); // Perbarui tampilan saat hover
+        });
+
+        // Reset tampilan bintang saat mouse keluar
+        star.addEventListener('mouseout', () => {
+            updateStars(selectedRating); // Kembalikan ke tampilan rating aktif
+        });
+    });
+
+    // Fungsi untuk memperbarui tampilan bintang
+    function updateStars(rating, isHover = false) {
+        stars.forEach((s, index) => {
+            if (index < rating) {
+                s.style.color = isHover ? '#ffcc00' : ''; // Warna kuning saat hover
+                s.classList.add('active'); // Tambahkan kelas aktif
+            } else {
+                s.style.color = ''; // Reset warna
+                s.classList.remove('active'); // Hapus kelas aktif
+            }
+        });
+    }
+
+    // Fungsi untuk mengirimkan ulasan
+    function submitReview() {
+        const comment = commentInput.value.trim(); // Ambil nilai komentar
+
+        if (!comment || selectedRating === 0) {
+            alert('Please provide a rating and a comment.');
+            return;
+        }
+
+        // Buat elemen ulasan baru
+        const reviewItem = document.createElement('div');
+        reviewItem.classList.add('review');
+
+        // Tambahkan komentar ke ulasan
+        const commentText = document.createElement('p');
+        commentText.innerHTML = `<strong>You</strong>: ${comment}`;
+        reviewItem.appendChild(commentText);
+
+        // Tambahkan bintang ke ulasan
+        const starsContainer = document.createElement('div');
+        starsContainer.classList.add('stars');
+        for (let i = 1; i <= 5; i++) {
+            const star = document.createElement('i');
+            star.classList.add('fas', 'fa-star');
+            if (i <= selectedRating) {
+                star.classList.add('active'); // Tambahkan kelas aktif untuk bintang yang dipilih
+            } else {
+                star.style.color = '#ccc'; // Warna abu-abu untuk bintang tidak dipilih
+            }
+            starsContainer.appendChild(star);
+        }
+
+        reviewItem.appendChild(starsContainer);
+
+        // Tambahkan ulasan ke output
+        reviewsOutput.appendChild(reviewItem);
+
+        // Reset form
+        commentInput.value = '';
+        selectedRating = 0;
+        updateStars(selectedRating);
+        ratingText.textContent = 'Your rating: 0/5';
+    }
+
+    // Event listener untuk tombol submit review
+    document.querySelector('button[onclick="submitReview()"]').addEventListener('click', submitReview);
+
+    // Fungsi untuk menampilkan/menyembunyikan ulasan
+    function toggleReviews() {
+        if (reviewContainer.style.display === 'none' || !reviewContainer.style.display) {
+            reviewContainer.style.display = 'block';
+            viewMoreButton.textContent = 'Hide Review'; // Ubah teks tombol
+        } else {
+            reviewContainer.style.display = 'none';
+            viewMoreButton.textContent = 'View Review'; // Reset teks tombol
+        }
+    }
+
+    // Event listener untuk tombol toggle ulasan
+    if (viewMoreButton) {
+        viewMoreButton.addEventListener('click', toggleReviews);
+    }
+});
+
+	</script>

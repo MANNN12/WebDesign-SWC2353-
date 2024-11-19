@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - SERENE COUTURE</title>
+	<link rel="stylesheet" href="css/Contact.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+	<style>
+		/* Dropdown Menu */
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            z-index: 1000;
+        }
+
+        .dropdown-menu ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .dropdown-menu ul li {
+            padding: 10px;
+        }
+
+        .dropdown-menu ul li a {
+            color: black;
+            text-decoration: none;
+        }
+
+        nav li:hover .dropdown-menu {
+            display: block;
+        }
+
+        .product-info {
+            color: black;
+            background-color: white;
+            padding: 10px;
+        }
+
+        /* Styling for product cards */
+        .product-list {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap; /* This allows the cards to wrap if there's not enough space */
+        }
+
+        .product-card {
+            text-align: center;
+            width: 200px;
+            transition: transform 0.3s;
+        }
+
+        .product-card:hover {
+            transform: scale(1.05);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: auto;
+            transition: transform 0.3s;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="header-container">
+        <div class="logo">
+            <img src="Image/logo-removebg-preview.png" width="150" height="150" alt="Logo"/>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="Homepage.html" class="active">Home</a></li>
+                <li><a href="Shop.html">Shop</a></li>
+                <li><a href="Contact.html">Contact</a></li>
+                <li><a href="Profile.html">Profile</a></li>
+            </ul>
+        </nav>
+				
+				<div class="search-container">
+            		<input type="text" id="searchInput" placeholder="Search for products..." />
+            		<button onclick="searchProducts()"><i class="fas fa-search"></i></button>
+        		</div>
+	
+        <div class="cart">
+            <a href="Payment.html" onclick="addToCart()"><i class="fas fa-shopping-bag"></i></a>
+            <span class="cart-badge" id="cartBadge">0</span>
+        </div>
+    </div>
+</header>
+
+<!-- Contact Section -->
+<section class="contact">
+    <h2>Contact Us</h2>
+    <p>We'd love to hear from you! Please fill out the form below and we will get back to you as soon as possible.</p>
+	
+    <form onsubmit="displayMessage(event)">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" rows="4" required></textarea>
+
+        <button type="submit">Send Message</button>
+    </form>
+	<!-- Placeholder untuk pesan konfirmasi -->
+<div id="confirmationMessage" style="margin-top: 15px; color: green; font-weight: bold;"></div>
+</section>
+
+<script>
+	function displayMessage(event) {
+    event.preventDefault(); // Mencegah form refresh halaman
+
+    // Tampilkan pesan konfirmasi
+   const confirmationElement = document.getElementById('confirmationMessage');
+    confirmationElement.innerHTML = `
+        <i class="fas fa-paper-plane"></i> <!-- Ikon kapal terbang -->
+        The message has been delivered!
+    `;}
+    // JavaScript for dropdown menu functionality
+    function toggleShopDropdown(event) {
+        event.preventDefault();
+        const dropdownMenu = document.getElementById('dropdownMenu');
+        dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
+    }
+
+    // Close the dropdown if clicked outside
+    window.onclick = function(event) {
+        if (!event.target.matches('.hamburger') && !event.target.closest('.dropdown-menu')) {
+            const dropdowns = document.getElementsByClassName("dropdown-menu");
+            for (let i = 0; i < dropdowns.length; i++) {
+                const openDropdown = dropdowns[i];
+                if (openDropdown.style.display === 'block') {
+                    openDropdown.style.display = 'none';
+                }
+            }
+        }
+    }
+	function handleFormSubmit(event) {
+    event.preventDefault(); // Mencegah form dari refresh halaman
+
+    // Ambil data dari form
+    const name = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const message = document.getElementById('message').value.trim();
+
+    // Validasi input (jika perlu)
+    if (!name || !email || !message) {
+        document.getElementById('confirmationMessage').style.color = 'red';
+        document.getElementById('confirmationMessage').textContent = 'Please fill out all fields before submitting.';
+        return;
+    }
+
+    // Tampilkan pesan konfirmasi
+    const confirmationElement = document.getElementById('confirmationMessage');
+    confirmationElement.style.color = 'green';
+    confirmationElement.textContent = 'Your message has been delivered!';
+
+    // Reset form
+    document.getElementById('name').value = '';
+    document.getElementById('email').value = '';
+    document.getElementById('message').value = '';
+}
+</script>
+
+</body>
+</html>

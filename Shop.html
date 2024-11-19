@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SERENE COUTURE - Shop</title>
+    <link rel="stylesheet" href="css/Shop.css">
+	<link rel="stylesheet" href="css/Homepage.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Dropdown Menu */
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            z-index: 1000;
+        }
+
+        .dropdown-menu ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .dropdown-menu ul li {
+            padding: 10px;
+        }
+
+        .dropdown-menu ul li a {
+            color: black;
+            text-decoration: none;
+        }
+
+        nav li:hover .dropdown-menu {
+            display: block;
+        }
+
+        .product-info {
+            color: black;
+            background-color: white;
+            padding: 10px;
+        }
+
+        /* Styling for product cards */
+        .product-list {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap; /* This allows the cards to wrap if there's not enough space */
+			margin: 0 auto;
+			max-width: 1200px;
+			gap: 10px;
+        }
+
+        .product-card {
+			flex: 0 1 30%;
+			box-sizing: border-box;
+            text-align: center;
+            width: 200px;
+            transition: transform 0.3s;
+			margin-bottom: 10px;
+        }
+
+        .product-card:hover {
+            transform: scale(1.05);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: auto;
+            transition: transform 0.3s;
+        }
+		
+		/* Styling for search results */
+        .search-results {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+			margin-left: 400px;
+        }
+
+        .product-item {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+		
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="header-container">
+        <div class="logo">
+            <img src="Image/logo-removebg-preview.png" width="500" height="500" alt="Logo"/>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="Homepage.html" class="active">Home</a></li>
+                <li><a href="Shop.html">Shop</a></li>
+                <li><a href="Contact.html">Contact</a></li>
+                <li><a href="Profile.html">Profile</a></li>
+            </ul>
+        </nav>
+		
+		<div class="search-container">
+            <input type="text" id="searchInput" placeholder="Search for products..." />
+            <button onclick="searchProducts()"><i class="fas fa-search"></i></button>
+        </div>
+		
+		
+        <div class="cart">
+            <a href="Payment.html"><i class="fas fa-shopping-bag"></i></a>
+            <span class="cart-badge" id="cartBadge">0</span>
+        </div>
+    </div>
+</header>
+
+<!-- Bar Kategori -->
+<div class="category-bar">
+    <a href="Shop.html" class="active" onclick="filterCategory('all')">New Arrivals</a>
+    <a href="Hoodies.html" onclick="filterCategory('hoodies')">Hoodies&nbsp;</a>
+    <a href="T-shirt.html" onclick="filterCategory('T-shirt')">Tees&nbsp;</a>
+    <a href="Topi.html" onclick="filterCategory('crew')">Headwear&nbsp;</a>
+	<a href="Spek.html" onclick="filterCategory('crew')">Accessories&nbsp;</a>
+</div>
+
+<section class="products">
+    <h2 style="text-align: center;">Our New ARRIVALS</h2>
+    <div class="product-list">
+        <div class="product-card">
+            <img src="Image/Baju_Depan.png" alt="Baju" 
+                 onmouseover="swapImage(this, 'Image/Baju_Belakang.png')" 
+                 onmouseout="swapImage(this, 'Image/Baju_Depan.png')"/>
+            <h3>SUPERIOR QUALITY ZIP HOODIE</h3>
+            <p>RM150.00</p>
+            <a href="product-details.html?name=Baju%20Kurung&price=55">
+				<a href="Men2.html">
+                <button>View Detail</button>
+				</a>
+            </a>
+        </div>
+        <div class="product-card">
+            <img src="Image/Baju2_Depan.png" alt="Baju2"
+                 onmouseover="swapImage(this, 'Image/Baju2_Belakang.png')" 
+                 onmouseout="swapImage(this, 'Image/Baju2_Depan.png')"/>
+            <h3>BLACK WORK JACKET STITCH</h3>
+            <p>RM200.00</p>
+            <a href="Men1.html">
+                <button>View Detail</button>
+            </a>
+        </div>
+        <div class="product-card">
+            <img src="Image/Topi1.png" alt="Card3"
+                 onmouseover="swapImage(this, 'Image/Topi1(1).png')" 
+                 onmouseout="swapImage(this, 'Image/Topi1.png')"/>
+            <h3>NEW ERA BASIC TRUCKER</h3>
+            <p>RM40.00</p>
+			<a href="Men13.html">
+                <button>View Detail</button>
+			</a>
+        </div>
+		
+		 <!-- Product Card 4 -->
+        <div class="product-card">
+            <img src="Image/Baju4_Depan.png" alt="Baju3"
+                 onmouseover="swapImage(this, 'Image/Baju4_Belakang.png')" 
+                 onmouseout="swapImage(this, 'Image/Baju4_Depan.png')"/>
+            <h3>CONTRAST STRIPE CREW</h3>
+            <p>RM250.00</p>
+            <a href="product-details.html?name=Casual%20T-Shirt&price=75">
+                <button>View Detail</button>
+            </a>
+        </div>
+		
+		<!-- Product Card 5 -->
+        <div class="product-card">
+          <img src="Image/Coat1_Depan.png" alt="Coat"
+                 onmouseover="swapImage(this, 'Image/Coat1_Belakang.png')" 
+                 onmouseout="swapImage(this, 'Image/Coat1_Depan.png')"/>
+            <h3> MOUNT DOWN JACKET</h3>
+            <p>RM350.00</p>
+            <a href="Men6.html">
+                <button>View Detail</button>
+            </a>
+        </div>
+		
+		<!-- Product Card 6 -->
+        <div class="product-card">
+          <img src="Image/3pack.png" alt="Baju3"
+                 onmouseover="swapImage(this, 'Image/Kotak.png')" 
+                 onmouseout="swapImage(this, 'Image/3pack.png')"/>
+            <h3>CONTRAST STRIPE CREW</h3>
+            <p>RM90.00</p>
+            <a href="product-details.html?name=Casual%20T-Shirt&price=75">
+                <button>View Detail</button>
+            </a>
+        </div>
+		
+    </div> <!-- Closing product-list div -->
+</section> <!-- Closing products section -->
+
+<script>
+    function swapImage(element, newSrc) {
+        element.src = newSrc;
+    }
+	
+
+    function updateCartBadge() {
+    const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+    const totalQuantity = cartItems.reduce((total, item) => total + item.quantity, 0);
+    document.getElementById('cartBadge').innerText = totalQuantity;
+}
+
+
+    window.onload = updateCartBadge;
+
+    function addToCart() {
+    const size = document.getElementById('size').value;
+    const color = document.getElementById('color').value;
+    const quantity = parseInt(document.getElementById('quantity').value, 10);
+    const price = 150.00;
+    const itemName = "SUPERIOR QUALITY ZIP HOODIE";
+
+    let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+
+    // Cek apakah item sudah ada di keranjang
+    const existingItem = cartItems.find(
+        item => item.name === itemName && item.size === size && item.color === color
+    );
+
+    if (existingItem) {
+        // Jika ada, tambahkan jumlah
+        existingItem.quantity += quantity;
+    } else {
+        // Jika tidak ada, tambahkan item baru
+        const newItem = {
+            name: itemName,
+            size: size,
+            color: color,
+            quantity: quantity,
+            price: price
+        };
+        cartItems.push(newItem);
+    }
+
+    // Simpan kembali ke localStorage
+    localStorage.setItem('cartItems', JSON.stringify(cartItems));
+
+    // Perbarui cart badge
+    updateCartBadge();
+
+    // Reset form
+    document.getElementById('size').value = 'S';
+    document.getElementById('color').value = 'Black';
+    document.getElementById('quantity').value = 1;
+
+    alert("Item berjaya ditambah ke dalam cart!");
+}
+	function updateCartBadge() {
+    const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+    const totalQuantity = cartItems.reduce((total, item) => total + item.quantity, 0);
+    document.getElementById('cartBadge').innerText = totalQuantity;
+}
+
+// Panggil fungsi ini saat halaman dimuat
+document.addEventListener('DOMContentLoaded', updateCartBadge);
+
+</script>
+	
+</body>
+</html>

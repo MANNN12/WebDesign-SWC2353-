@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SERENE COUTURE</title>
+    <link rel="stylesheet" href="css/HomePage.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Additional styles for the dropdown */
+        .dropdown-menu {
+            display: none; /* Initially hidden */
+            position: absolute;
+            background-color: #fff; /* Background color for the dropdown */
+            border: 1px solid #ccc; /* Optional border */
+            z-index: 1000; /* Ensures dropdown is above other elements */
+        }
+
+        .dropdown-menu ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .dropdown-menu li {
+            padding: 10px;
+        }
+
+        .dropdown-menu li a {
+            text-decoration: none;
+            color: black; /* Text color */
+            display: block; /* Make the link block level */
+        }
+
+        .dropdown-menu li a:hover {
+            background-color: #f0f0f0; /* Background color on hover */
+        }
+
+        /* Ensure the nav items are relatively positioned for dropdown */
+        nav {
+            position: relative;
+        }
+
+        /* Styling for search results */
+        .search-results {
+            margin-top: 20px;
+            display: none; /* Initially hidden */
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .search-results.active {
+            display: flex; /* Show results when active */
+        }
+
+        .product-item {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+		.receipt-icon-container a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    margin-left: 20px; /* Tambah jarak antara ikon dan elemen lain */
+	margin-right: 20px;
+}
+
+.receipt-icon-container a:hover {
+    color: #f39c12; /* Ubah warna ikon apabila hover */
+}
+
+.receipt-icon-container a i {
+    font-size: 21px; /* Ukuran ikon */
+}
+		 .results-container {
+            max-width: 500px;
+            margin: 0 auto;
+            text-align: left;
+            border-top: 2px solid #ccc;
+            padding-top: 10px;
+			 display: none;
+        }
+
+        .result-item {
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Header and Navigation -->
+<header>
+    <div class="header-container">
+        <div class="logo">
+            <img src="Image/logo-removebg-preview.png" width="500" height="500" alt="Logo"/>
+        </div>
+
+        <nav>
+            <ul>
+                <li><a href="Homepage.html" class="active">Home</a></li>
+                <li><a href="Shop.html">Shop</a></li>
+                <li><a href="Contact.html">Contact</a></li>
+                <li><a href="Profile.html">Profile</a></li>
+            </ul>
+        </nav>
+			
+		 <div class="receipt-icon-container">
+            <a href="Receipt.html">
+                <i class="fas fa-receipt"></i>Receipt
+            </a>
+        </div>
+		<div class="logout-container">
+    		<a href="Tracking.html">
+        	<img src="Image/Van1.png" width="50" height="50" alt="Track Order">
+    	</a>
+		</div>
+		
+        <div class="search-container">
+        <input type="text" id="searchBox" class="search-box" placeholder="Search...">
+        <button class="fas fa-search" onclick="handleSearch()"></button>
+    	</div>
+		
+		<!-- Ruang untuk hasil carian -->
+    <div class="results-container" id="resultsContainer"></div>
+	
+        <div class="cart">
+            <a href="Payment.html" onclick="addToCart()"><i class="fas fa-shopping-bag"></i></a>
+            <span class="cart-badge" id="cartBadge">0</span> <!-- Badge for cart icon -->
+        </div>
+	
+    </div>
+</header>
+
+<!-- Hero Section with Video and Overlay -->
+<section class="hero">
+    <video autoplay muted loop playsinline>
+        <source src="Video/Fashion.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <div class="hero-overlay">
+        <h1>Welcome to Serene Couture</h1>
+        <p>Find Your Perfect Outfit Today.</p>
+    </div>
+</section>
+
+<!-- Featured Categories -->
+<section class="categories">
+    <h2 class="categories-title">CATEGORY</h2> 
+    <div class="category">
+        <h2>New Collection</h2>
+        <img src="Image/Man1.png.jpg" alt="Man Category"/>
+    </div>
+    <div class="category">
+        <h2>Clothing</h2>
+        <img src="Image/new collection 3.png" alt="Women Category"/>
+    </div>
+    <div class="category">
+        <h2>Accessories</h2>
+        <img src="Image/Accessories.png" alt="Kids Category"/>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+	<div class="waves">
+		<div class="wave" id="wave1"></div>
+		<div class="wave" id="wave2"></div>
+		<div class="wave" id="wave3"></div>
+		<div class="wave" id="wave4"></div>
+	</div>
+	
+    <ul class="social-icon">
+		<li>
+			<a href="https://www.facebook.com/stussy/"><i class="fa-brands fa-facebook"></i></a>
+		</li>
+		<li>
+			<a href="https://www.instagram.com/stussy/"><i class="fa-brands fa-instagram"></i></a>
+		</li>
+		<li>
+			<a href="https://x.com/stussy"><i class="fa-brands fa-twitter"></i></a>
+		</li>
+		<li>
+			<a href="https://www.linkedin.com/company/stussy-inc."><i class="fa-brands fa-linkedin"></i></a>
+		</li>
+	</ul>
+	<ul class="menu">
+		<li><a href="HomePage.html">Home</a></li>
+		<li><a href="Shop.html">Shop</a></li>
+		<li><a href="Contact.html">Contact</a></li>
+		<li><a href="Profile.html">Profile</a></li>
+	</ul>
+	<p>&copy2024 Serene Couture | All Rights Reserved</p>
+</footer>
+
+<script>
+    / Data produk untuk carian
+    const products = [
+        "Apple iPhone",
+        "Apple MacBook",
+        "Samsung Galaxy",
+        "Sony PlayStation",
+        "Dell XPS Laptop",
+        "HP Pavilion",
+        "Asus ROG Phone",
+        "Microsoft Surface",
+        "Xiaomi Mi Band",
+        "OnePlus Nord",
+        "Google Pixel",
+        "Nintendo Switch"
+    ];
+
+
+    function searchProducts() {
+        const searchInput = document.getElementById("searchInput").value.toLowerCase();
+        const resultsContainer = document.getElementById("resultsContainer");
+        resultsContainer.innerHTML = "";
+
+        const filteredProducts = products.filter(product =>
+            product.name.toLowerCase().includes(searchInput) ||
+            product.category.toLowerCase().includes(searchInput) ||
+            product.description.toLowerCase().includes(searchInput)
+        );
+
+        if (filteredProducts.length > 0) {
+            resultsContainer.classList.add("active");
+            filteredProducts.forEach(product => {
+                const productItem = document.createElement("div");
+                productItem.className = "product-item";
+                productItem.innerHTML = `
+                    <a href="${product.link}">
+                        <h3>${product.name}</h3>
+                        <p>Category: ${product.category}</p>
+                        <p>${product.description}</p>
+                    </a>
+                `;
+                resultsContainer.appendChild(productItem);
+            });
+        } else if (searchInput !== "") {
+            resultsContainer.classList.add("active");
+            const noResults = document.createElement("div");
+            noResults.className = "product-item";
+            noResults.innerHTML = `<p>No products found.</p>`;
+            resultsContainer.appendChild(noResults);
+        } else {
+            resultsContainer.classList.remove("active");
+        }
+    }
+
+    document.getElementById("searchInput").addEventListener("input", searchProducts);
+	
+	const video = document.querySelector('video');
+
+// Pastikan video autoplay dan muted
+video.muted = true;
+video.autoplay = true;
+video.loop = true;
+
+// Jika autoplay terganggu, mulai ulang manual
+video.addEventListener('play', () => {
+    if (!video.muted) {
+        video.muted = true; // Paksa mute jika browser melanggar
+    }
+});
+	   // Fungsi untuk menguruskan carian
+    function handleSearch() {
+        const searchInput = document.getElementById("searchBox");
+        const resultsContainer = document.getElementById("resultsContainer");
+
+        // Ambil nilai input
+        const searchTerm = searchInput.value.trim();
+
+        // Periksa sama ada pengguna memasukkan input
+        if (searchTerm !== "") {
+            // Paparkan hasil carian
+            resultsContainer.style.display = "block";
+        } else {
+            // Jika kosong, sembunyikan hasil dan beri mesej amaran
+            resultsContainer.style.display = "none";
+            alert("Please enter a search term.");
+        }
+    }
+</script>
+
+</body>
+</html>

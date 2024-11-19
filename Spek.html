@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SERENE COUTURE - Shop</title>
+    <link rel="stylesheet" href="css/Shop.css">
+	<link rel="stylesheet" href="css/HomePage.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Dropdown Menu */
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            z-index: 1000;
+        }
+
+        .dropdown-menu ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .dropdown-menu ul li {
+            padding: 10px;
+        }
+
+        .dropdown-menu ul li a {
+            color: black;
+            text-decoration: none;
+        }
+
+        nav li:hover .dropdown-menu {
+            display: block;
+        }
+
+        .product-info {
+            color: black;
+            background-color: white;
+            padding: 10px;
+        }
+
+        /* Styling for product cards */
+        .product-list {
+            display: flex;
+            justify-content: space-between; /* Menggunakan space-between untuk ruang yang lebih baik */
+            flex-wrap: wrap; /* Membenarkan bungkus */
+            max-width: 1200px; /* Anda boleh tetapkan lebar maksimum jika diperlukan */
+            margin: 0 auto; /* Untuk pusatkan produk dalam parent container */
+       }
+
+		.product-card {
+   			flex: 0 1 30%; /* Setiap card akan mengambil 30% lebar parent */
+    		box-sizing: border-box; /* Pastikan padding dan border tidak menambah kepada lebar */
+    		margin-bottom: 20px; /* Jarak antara barisan produk */
+		}
+
+        .product-card:hover {
+            transform: scale(1.05);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: auto;
+            transition: transform 0.3s;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="header-container">
+        <div class="logo">
+            <img src="Image/logo-removebg-preview.png" width="500" height="500" alt="Logo"/>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="Homepage.html" class="active">Home</a></li>
+                <li><a href="Shop.html">Shop</a></li>
+                <li><a href="Contact.html">Contact</a></li>
+                <li><a href="Profile.html">Profile</a></li>
+            </ul>
+        </nav>
+		
+		<div class="search-container">
+            <input type="text" id="searchInput" placeholder="Search for products..." />
+            <button onclick="searchProducts()"><i class="fas fa-search"></i></button>
+        </div>
+		
+        <div class="cart">
+            <a href="Payment.html"><i class="fas fa-shopping-bag"></i></a>
+            <span class="cart-badge" id="cartBadge">0</span>
+        </div>
+    </div>
+</header>
+
+<!-- Bar Kategori -->
+<div class="category-bar">
+    <a href="Shop.html" onclick="filterCategory('all')">New Arrivals</a>
+    <a href="Hoodies.html" onclick="filterCategory('hoodies')">Hoodies&nbsp;</a>
+    <a href="T-shirt.html" onclick="filterCategory('T-shirt')">Tees&nbsp;</a>
+    <a href="Topi.html" onclick="filterCategory('crew')">Headwear&nbsp;</a>
+	<a href="Spek.html" class="active" onclick="filterCategory('crew')">Accessories&nbsp;</a>
+</div>
+
+<section class="products">
+    <h2 style="text-align: center;">Our Collection</h2>
+    <div class="product-list">
+        <div class="product-card">
+            <img src="Image/Spek1_Depan.png" alt="Baju" 
+                 onmouseover="swapImage(this, 'Image/Spek1_Belakang.png')" 
+                 onmouseout="swapImage(this, 'Image/Spek1_Depan.png')"/>
+            <h3>ROME SUNGLASSES</h3>
+            <p>RM160.00</p>
+            <a href="Men17.html">
+                <button>View Detail</button>
+            </a>
+        </div>
+        <div class="product-card">
+            <img src="Image/Spek2_Depan.png" alt="Baju2"
+                 onmouseover="swapImage(this, 'Image/Spek2_Belakang.png')" 
+                 onmouseout="swapImage(this, 'Image/Spek2_Depan.png')"/>
+            <h3>ACE SUNGLASSES</h3>
+            <p>RM160.00</p>
+            <a href="Men18">
+                <button>View Detail</button>
+            </a>
+        </div>
+        <div class="product-card">
+            <img src="Image/Spek3_Depan.png" alt="Card3"
+                 onmouseover="swapImage(this, 'Image/Spek3_Belakang.png')" 
+                 onmouseout="swapImage(this, 'Image/Spek3_Depan.png')"/>
+            <h3>RENE SUNGLASSES</h3>
+            <p>RM160.00</p>
+            <a href="Spek19.html">
+                <button>View Detail</button>
+            </a>
+        </div>
+		
+		<!--product 4-->
+		<div class="product-card">
+            <img src="Image/Keychain_Depan.png" alt="Card3"
+                 onmouseover="swapImage(this, 'Image/Keychain_Belakang.png')" 
+                 onmouseout="swapImage(this, 'Image/Keychain_Depan.png')"/>
+            <h3>8 BALL KEYCHAIN</h3>
+            <p>RM30.00</p>
+            <a href="product-details.html?name=Dress%20Musim%20Panas&price=40">
+                <button>View Detail</button>
+            </a>
+        </div>
+		
+		<!--product 5-->
+		<div class="product-card">
+            <img src="Image/Stockin.png" alt="Card3"/>
+            <h3>HELVETICA CREW SOCK</h3>
+            <p>RM30.00</p>
+            <a href="product-details.html?name=Dress%20Musim%20Panas&price=40">
+               <button>View Detail</button>
+            </a>
+        </div>
+		
+		<!--product 6-->
+		<div class="product-card">
+            <img src="Image/Beg.png" alt="Card3"
+                 onmouseover="swapImage(this, 'Image/Beg_Belakang.png')" 
+                 onmouseout="swapImage(this, 'Image/Beg.png')"/>
+            <h3>CANVAS XL TOTE BAG</h3>
+            <p>RM70.00</p>
+            <a href="Men20.html">
+                <button>View Detail</button>
+            </a>
+        </div>
+		
+    </div> <!-- Closing product-list div -->
+</section> <!-- Closing products section -->
+
+<script>
+    // Tukar imej apabila hover dan mouse keluar
+    function swapImage(element, newSrc) {
+        element.src = newSrc;
+    }
+
+    function updateCartBadge() {
+        let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+        const totalCount = cartItems.reduce((total, item) => total + item.quantity, 0);
+        document.getElementById('cartBadge').innerText = totalCount;
+    }
+
+    window.onload = updateCartBadge;
+
+    function toggleShopDropdown(event) {
+        event.preventDefault();
+        const dropdownMenu = document.getElementById('dropdownMenu');
+        dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
+    }
+	function updateCartBadge() {
+    const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+    const totalQuantity = cartItems.reduce((total, item) => total + item.quantity, 0);
+    document.getElementById('cartBadge').innerText = totalQuantity;
+}
+
+// Panggil fungsi ini saat halaman dimuat
+document.addEventListener('DOMContentLoaded', updateCartBadge);
+
+</script>
+</body>
+</html>

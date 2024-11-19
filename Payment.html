@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add to Cart - Serene Couture</title>
+    <link rel="stylesheet" href="css/Payment.css">
+    <link rel="stylesheet" href="css/HomePage.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header class="header-container">
+        <div class="logo">
+            <img src="Image/logo-removebg-preview.png" alt="Logo" class="logo-image"/>
+        </div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="Homepage.html">Home</a></li>
+                <li><a href="Shop.html">Shop</a></li>
+                <li><a href="Contact.html">Contact</a></li>
+                <li><a href="Profile.html">Profile</a></li>
+            </ul>
+        </nav>
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Search for products..." />
+            <button onclick="searchProducts()"><i class="fas fa-search"></i></button>
+        </div>
+
+        <div class="cart">
+            <a href="Payment.html" onclick="addToCart()"><i class="fas fa-shopping-bag"></i></a>
+            <span class="cart-badge" id="cartBadge">0</span> <!-- Badge for cart icon -->
+        </div>
+    </header>
+
+    <!-- Back Button to go to the previous page -->
+    <button onclick="goBack()" class="back-btn">Go Back</button>
+
+    <div class="small-container">
+        <table id="cartTable">
+            <tr>
+                <th>Product</th>
+                <th>Quantity</th>
+                <th>Price</th>
+            </tr>
+            <tr class="cart-item">
+                <td>
+                    <div class="cart-info">
+                        <img src="Image/Baju2_Depan.png" alt="Relaxed Hoodie">
+                        <p>BLACK WORK JACKET STITCH</p>
+                        <small>Price: RM200.00</small>
+                        <a href="javascript:void(0);" class="remove-item" onclick="removeItem(this)">Remove</a>
+                    </div>
+                </td>
+                <td>
+                    <div class="quantity-control">
+                        <button class="quantity-btn" onclick="updateQuantity(this, -1)">-</button>
+                        <input type="number" class="quantity-input" value="1" min="1" onchange="updateTotal()">
+                        <button class="quantity-btn" onclick="updateQuantity(this, 1)">+</button>
+                    </div>
+                </td>
+                <td class="item-price" data-price="200"></td> <!-- Price of the item -->
+            </tr>
+            <tr class="cart-item">
+                <td>
+                    <div class="cart-info">
+                        <img src="Image/Baju_Depan.png" alt="Relaxed Hoodie">
+                        <p>RELAX HOODIE</p>
+                        <small>Price: RM100.00</small>
+                        <a href="javascript:void(0);" class="remove-item" onclick="removeItem(this)">Remove</a>
+                    </div>
+                </td>
+                <td>
+                    <div class="quantity-control">
+                        <button class="quantity-btn" onclick="updateQuantity(this, -1)">-</button>
+                        <input type="number" class="quantity-input" value="1" min="1" onchange="updateTotal()">
+                        <button class="quantity-btn" onclick="updateQuantity(this, 1)">+</button>
+                    </div>
+                </td>
+                <td class="item-price" data-price="100"></td> <!-- Price of the item -->
+            </tr>
+        </table>
+
+        <div class="total-price">
+            <table>
+                <tr>
+                    <td>Subtotal</td>
+                    <td id="subtotal">RM0.00</td>
+                </tr>
+                <tr>
+                    <td>Shipping Fee</td>
+                    <td id="tax">RM10.00</td>
+                </tr>
+                <tr>
+                    <td>Total</td>
+                    <td id="total">RM0.00</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="checkout-btn-container">
+            <a href="Checkout.html" class="checkout-btn">Go to Checkout</a>
+        </div>
+    </div>
+
+    <script>
+        // Function to remove an item from the cart
+        function removeItem(item) {
+            var row = item.closest("tr");
+            row.remove();
+            updateTotal(); // Recalculate total after removal
+        }
+
+        // Function to update the quantity of an item
+        function updateQuantity(button, change) {
+            var inputField = button.closest('td').querySelector('.quantity-input');
+            var newValue = parseInt(inputField.value) + change;
+            if (newValue >= 1) {
+                inputField.value = newValue;
+                updateTotal(); // Recalculate total after quantity change
+            }
+        }
+
+        // Function to update the total price when items are removed or quantities change
+        function updateTotal() {
+            let subtotal = 0;
+            const shippingFee = 10; // Fixed shipping fee
+            let items = document.querySelectorAll(".cart-item");
+
+            // Loop through each item to calculate subtotal
+            items.forEach(item => {
+                const price = parseFloat(item.querySelector(".item-price").getAttribute("data-price")); // Use data-price
+                const quantity = parseInt(item.querySelector(".quantity-input").value);
+
+                if (!isNaN(price) && !isNaN(quantity)) {
+                    subtotal += price * quantity;
+                }
+            });
+
+            // Calculate total with shipping fee
+            const total = subtotal + shippingFee;
+
+            // Update the total prices in the HTML
+            document.getElementById("subtotal").innerText = `RM${subtotal.toFixed(2)}`;
+            document.getElementById("tax").innerText = `RM${shippingFee.toFixed(2)}`;
+            document.getElementById("total").innerText = `RM${total.toFixed(2)}`;
+        }
+
+        // Auto-update the total when the page loads
+        document.addEventListener("DOMContentLoaded", function() {
+            updateTotal();  // Recalculate total when the page is fully loaded
+        });
+
+        // Function to go back to the previous page
+        function goBack() {
+            window.history.back(); // Go to the previous page in the browser history
+        }
+		
+			function updateCartBadge() {
+    const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+    const totalQuantity = cartItems.reduce((total, item) => total + item.quantity, 0);
+    document.getElementById('cartBadge').innerText = totalQuantity;
+}
+
+// Panggil fungsi ini saat halaman dimuat
+document.addEventListener('DOMContentLoaded', updateCartBadge);
+
+    </script>
+</body>
+</html>

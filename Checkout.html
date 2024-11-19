@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Card with Payment Options</title>
+    <link rel="stylesheet" href="css/Checkout.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Styling for hidden elements */
+        .hidden {
+            display: none;
+        }
+
+        .payment-option {
+            margin: 10px 0;
+            padding: 10px 20px;
+            background-color: #000;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .payment-option:hover {
+            background-color: #007bff;
+        }
+
+        .card-info {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+	<main>
+		 <!-- Back Button to go to the previous page -->
+    <button onclick="goBack()" class="back-btn">Go Back</button>
+		
+    <!-- Shipping Information Section -->
+        <section class="shipping-info">
+            <h2>Shipping Information</h2>
+            <form id="shipping-form">
+                <label for="name">Full Name:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="address">Address:</label>
+                <input type="text" id="address" name="address" required>
+
+                <label for="city">City:</label>
+                <input type="text" id="city" name="city" required>
+
+                <label for="zip">Number Phone:</label>
+                <input type="text" id="zip" name="zip" required>
+
+                <label for="country">Country:</label>
+                <select id="country" name="country" required>
+                    <option value="Malaysia">Malaysia</option>
+					<option value="Malaysia">Indonesia</option>
+					<option value="Malaysia">Brunei</option>
+                    <!-- Add more countries as needed -->
+                </select>
+            </form>
+        </section>
+
+    <!-- Payment Information Section -->
+    <section class="payment-info">
+        <h2>Payment Method</h2>
+        <h3>How would you like to pay?</h3>
+        <div class="payment-methods">
+          
+            <!-- Card Information Form -->
+            <div id="card-info" class="card-info hidden">
+                <h3>Enter Your Card Information</h3>
+                <label for="card-number">Card Number:</label>
+                <input type="text" id="card-number" name="card-number" required>
+
+                <label for="expiry-date">Expiry Date:</label>
+                <input type="text" id="expiry-date" name="expiry-date" placeholder="MM/YY" required>
+
+                <label for="cvv">CVV:</label>
+                <input type="text" id="cvv" name="cvv" required>
+            </div>
+
+            <button class="payment-option" onclick="selectPaymentMethod('paypal')">
+                <img src="https://www.paypalobjects.com/images/shared/paypal-logo-129x32.svg" alt="PayPal" class="payment-icon"> PayPal
+            </button>
+
+            <button class="payment-option" onclick="selectPaymentMethod('fpx')">
+                <img src="Image/Fpx.png" alt="FPX" class="payment-icon"> Pay with Online Banking
+            </button>
+        </div>
+    </section>
+
+    <!-- Place Order Button -->
+    <button onclick="placeOrder()" class="place-order-btn">Place Order</button>
+</main>
+
+<script>
+    function goBack() {
+        window.history.back(); // Go to the previous page in the browser history
+    }
+
+    function selectPaymentMethod(method) {
+        // Hide the card form by default
+        document.getElementById('card-info').classList.add('hidden');
+
+        if (method === 'credit-card') {
+            // Show the card information form
+            document.getElementById('card-info').classList.remove('hidden');
+        } else if (method === 'paypal') {
+            alert("Redirecting to PayPal...");
+        } else if (method === 'fpx') {
+            alert("Redirecting to FPX Banking...");
+        }
+    }
+
+    function placeOrder() {
+        // Display a confirmation message
+        alert("You have placed your order!");
+
+        // Redirect to the tracking page after a short delay
+        setTimeout(function () {
+            window.location.href = "Receipt.html";
+        }, 2000); // 2-second delay before redirecting
+    }
+</script>
+
+</body>
+</html>
