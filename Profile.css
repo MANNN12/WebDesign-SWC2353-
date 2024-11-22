@@ -1,0 +1,186 @@
+/* General Styling */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #1a1a1a, #333);
+    color: black;
+    transition: background 0.3s ease;
+	background-image: url("../Image/Background.jpg"); /* Replace with the correct image path */
+    background-size: cover; /* Ensures the image covers the entire screen */
+    background-position: center center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+}
+
+/* Header Styling */
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: #000;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    height: 80px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Logo Styling */
+.logo {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.logo img {
+    width: 160px;
+    height: auto;
+    filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.5));
+}
+
+header a {
+    color: #d3d3d3;
+    text-decoration: none;
+    transition: color 0.3s ease;
+	margin-right: 20px;
+}
+
+header a:hover {
+    color: #e63946;
+}
+
+/* Navigation Menu */ 
+nav ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+	margin-left: auto;
+    width: auto;
+	margin-right: 80px;
+	justify-content: flex-start;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #d3d3d3;
+    font-weight: bold;
+    font-size: 14px;
+    text-transform: uppercase;
+    padding: 5px;
+    transition: color 0.3s ease, border-bottom 0.3s ease;
+	
+}
+
+nav ul li a:hover {
+    color: #e63946;
+    border-bottom: 2px solid #e63946;
+}
+
+/* Cart and Heart Icons */
+.cart a {
+    font-size: 26px;
+    color: #ff6f61; /* Warna lebih lembut */
+	margin-left: 20px;
+}
+
+.cart a:hover {
+    color: #e63946;
+}
+
+/* Cart and Heart Badges */
+.cart {
+    position: relative;
+    display: inline-block;
+}
+
+.cart-badge, .heart-badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: #ffebcc; /* Warna badge yang lebih lembut */
+    color: black;
+    border-radius: 50%;
+    padding: 5px 7px;
+    font-size: 14px;
+    font-weight: bold;
+    transform: translate(50%, -50%);
+}
+
+/* Profile Section */
+.profile {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    text-align: center; /* Center align text */
+}
+
+.profile img {
+    width: 200px; /* Set image width */
+    height: 200px; /* Set image height */
+    border-radius: 50%; /* Make the image circular */
+    margin-bottom: 20px; /* Space below the image */
+    object-fit: cover; /* Ensure image covers the area */
+}
+
+.profile h2 {
+    color: #000;
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+.profile p {
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+
+.profile form {
+    display: flex;
+    flex-direction: column;
+}
+
+.profile label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.profile input {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.profile button {
+    padding: 10px;
+    background: linear-gradient(135deg, #000, #1c1c1c);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 16px;
+}
+
+.profile button:hover {
+    background: #007bff;
+}
+
+/* Responsive Media Queries */
+@media (max-width: 768px) {
+    .header-container {
+        flex-direction: column;
+        height: auto;
+        padding: 15px;
+    }
+}

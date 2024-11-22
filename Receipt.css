@@ -1,0 +1,143 @@
+/* Reset some default styles */
+body, h1, table {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+	background-image: url("../Image/Wallpaper.jpg"); /* Replace with the correct image path */
+    background-size: cover; /* Ensures the image covers the entire screen */
+    background-position: center center; /* Centers the image */
+    background-repeat: no-repeat;
+}
+
+/* Header styling */
+.header-container {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.header-container .logo img {
+    width: 150px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+}
+
+.nav-links li {
+    margin: 0 20px;
+}
+
+.nav-links a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.nav-links a:hover {
+    text-decoration: underline;
+}
+
+/* Receipt Container */
+.receipt-container {
+    background-color: #fff;
+    margin: 30px auto;
+    padding: 20px;
+    width: 80%;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.receipt-container h1 {
+    font-size: 36px;
+    text-align: center;
+    color: #2c3e50;
+}
+
+.receipt-container p {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+#receiptTable {
+    width: 100%;
+    margin: 20px 0;
+    border-collapse: collapse;
+}
+
+#receiptTable th, #receiptTable td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.receipt-item img {
+    width: 60px;
+    height: auto;
+    margin-right: 10px;
+}
+
+.receipt-item p {
+    margin: 0;
+    font-weight: bold;
+}
+
+.receipt-item small {
+    color: #888;
+}
+
+.total-price table {
+    width: 100%;
+    margin-top: 20px;
+    text-align: right;
+}
+
+.total-price td {
+    padding: 10px;
+}
+
+.total-price td:first-child {
+    text-align: left;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.total-price td:last-child {
+    color: #e74c3c;
+    font-weight: bold;
+}
+
+.thank-you {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.thank-you p {
+    font-size: 18px;
+    color: black;
+	font-weight: bold;
+}
+
+.thank-you .btn {
+    display: inline-block;
+    background-color: black;
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 16px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+.thank-you .btn:hover {
+    background-color: #007bff;
+}

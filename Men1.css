@@ -1,0 +1,188 @@
+/* Layout Styling */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    background-color: #f8f9fa;
+    color: #333;
+    line-height: 1.6;
+	background-image: url("../Image/Back1.jpg"); /* Replace with the correct image path */
+    background-size: cover; /* Ensures the image covers the entire screen */
+    background-position: center center; /* Centers the image */
+    background-repeat: no-repeat;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: #000;
+    color: #fff;
+}
+
+.product-details {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 50px auto;
+    max-width: 1000px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    gap: 20px;
+}
+
+.product-image img {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 8px;
+}
+
+.product-info {
+    flex: 1;
+    padding: 20px;
+}
+
+.product-info h2 {
+    font-size: 28px;
+    color: #343a40;
+    margin-bottom: 10px;
+}
+
+.product-price {
+    font-size: 22px;
+    color: black;
+    margin-bottom: 20px;
+}
+
+.options {
+    margin-top: 20px;
+}
+
+.options label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.options select, .options input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.options button {
+    margin-top: 20px;
+    width: 100%;
+    padding: 12px;
+    background-color: #e63946;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.options button:hover {
+    background-color: #d62839;
+    transform: scale(1.05);
+}
+.options-inline {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 15px; /* Jarak antar elemen */
+    margin-top: 10px;
+}
+
+.options-inline label {
+    font-weight: bold;
+    margin-right: 5px;
+    font-size: 14px;
+}
+
+.options-inline select,
+.options-inline input {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+    min-width: 80px; /* Ukuran minimum untuk dropdown */
+}
+
+.options-inline input {
+    max-width: 60px; /* Batasan ukuran input quantity */
+}
+
+button {
+    margin-top: 20px;
+    padding: 12px;
+    background-color: black;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #007bff;
+}
+/* Style for the search container */
+.search-container {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+	margin-right: 20px;
+}
+
+.search-container input {
+    padding: 5px;
+    border: 3px solid #ccc;
+    border-radius: 5px;
+}
+
+.search-container button {
+    background-color: white;
+    color: black;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+	top: -9px;
+	position: relative;
+}
+
+.search-container button i {
+    font-size: 1rem;
+}
+
+.search-container button:hover {
+    background-color: #555;
+}
+
+.size-measurement {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.size-measurement h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.size-measurement img {
+    width: 100%;
+    max-width: 500px; /* Adjust based on your layout */
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+

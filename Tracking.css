@@ -1,0 +1,392 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: black; /* Warna lebih lembut untuk kontras */
+    color: #333;
+	background-image: url("../Image/Bayor.jpg"); /* Replace with the correct image path */
+    background-size: cover; /* Ensures the image covers the entire screen */
+    background-position: center center; /* Centers the image */
+    background-repeat: no-repeat;
+}
+
+/* Header Styling */
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 15px;
+    background-color: #000;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    height: 60px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Header Colors */
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 0;
+}
+
+header a {
+    color: #d3d3d3;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+header a:hover {
+    color: #e63946;
+}
+
+/* Logo Styling */
+.logo {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.logo img {
+    width: 160px;
+    height: auto;
+    filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.5));
+}
+
+nav {
+    display: flex;
+    flex: 1;
+    justify-content: center; /* Menengahkan navigasi */
+    align-items: center;
+}
+
+/* Navigation Menu */
+nav ul {
+    list-style: none;
+    display: inline-flex;
+    gap: 10px !important; /* Kurangkan jarak antaranya */
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+nav ul li {
+    margin: 0 10px !important; /* Kurangkan jarak margin */
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #d3d3d3 !important;
+    font-weight: bold;
+    font-size: 14px !important; /* Kecilkan font */
+    text-transform: uppercase;
+    padding: 5px 0 !important;
+    transition: color 0.3s ease, border-bottom 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #e63946;
+    border-bottom: 2px solid #e63946;
+}
+
+/* Styling for the logout button */
+.logout-container {
+    display: flex;
+    justify-content: flex-end; /* Align to the right */
+    align-items: center;
+	margin-right: 20px;
+}
+
+.logout img{
+	margin-right: 20px;
+}
+
+
+.logout-btn {
+    padding: 10px 20px;
+    background-color: #e74c3c; /* Red background for logout */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.logout-btn:hover {
+    background-color: #c0392b; /* Darker red on hover */
+}
+
+/* Style for the search container */
+.search-container {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+	margin-right: 20px;
+}
+
+.search-container input {
+    padding: 5px;
+    border: 3px solid #ccc;
+    border-radius: 5px;
+}
+
+.search-container button {
+    background-color: white !important;
+    color: black;
+	 border: 1px solid #ccc !important;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.search-container button i {
+    font-size: 1rem;
+	 color: black;
+}
+
+.search-container button:hover {
+    background-color: #555;
+}
+
+/* Cart and Heart Icons */
+.cart a {
+    font-size: 26px;
+    color: #ff6f61; /* Warna lebih lembut */
+}
+
+.cart a:hover {
+    color: #e63946;
+}
+
+/* Cart and Heart Badges */
+.cart {
+    position: relative;
+    display: inline-block;
+}
+
+.cart-badge, .heart-badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: #ffebcc; /* Warna badge yang lebih lembut */
+    color: black;
+    border-radius: 50%;
+    padding: 5px 7px;
+    font-size: 14px;
+    font-weight: bold;
+    transform: translate(50%, -50%);
+}
+
+.container {
+    background-color: #fff;
+    padding: 20px;
+    width: 100%;
+    max-width: 500px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.order-info {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.order-id span {
+    font-size: 18px;
+    color: #333;
+}
+
+.status h2 {
+    font-size: 20px;
+    color: black!important;
+    margin-top: 10px;
+}
+
+.status p {
+    font-size: 14px;
+    color: #777;
+    margin-top: 5px;
+}
+
+.status-progress {
+    margin-bottom: 20px;
+}
+
+.status-step {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.status-step span {
+    font-size: 14px;
+    color: #777;
+}
+
+.status-step.active span {
+    color: #333;
+}
+
+button.view-more {
+    background-color: black;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    width: 100%;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button.view-more:hover {
+    background-color: #007bff;
+}
+
+.review-section {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.review {
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    text-align: left;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.view-more {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.view-more:hover {
+    background-color: #0056b3;
+}
+.rating-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.stars {
+    display: inline-flex;
+    gap: 5px;
+    cursor: pointer;
+}
+
+.stars i {
+    font-size: 24px;
+    color: #ccc; /* Warna default (abu-abu) */
+    transition: color 0.3s;
+}
+
+.stars i:hover,
+.stars i.active {
+    color: #ffcc00; /* Warna kuning untuk bintang */
+}
+
+#rating-text {
+    margin-top: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+}
+.rating-comment-section {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.stars {
+    display: inline-flex;
+    gap: 5px;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.stars i {
+    font-size: 24px;
+    color: #ccc; /* Default color (gray) */
+    transition: color 0.3s;
+}
+
+.stars i.active {
+    color: #ffcc00; /* Active star color (yellow) */
+}
+
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.review {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    text-align: left;
+}
+
+.review p {
+    margin: 5px 0;
+}
+
+/* Pastikan semua bintang di ulasan menggunakan warna kuning */
+.review .stars i {
+    font-size: 20px;
+    color: #ffcc00 !important; /* Tambahkan !important untuk memastikan prioritas */
+}
+
+/* Untuk bintang yang tidak aktif (jika ada bintang kosong/abu-abu) */
+.review .stars i.inactive {
+    color: #ccc; /* Warna abu-abu untuk bintang tidak aktif */
+}
+
+.review .stars i,
+.stars i.active {
+    color: #ffcc00; /* Kuning untuk bintang aktif */
+    font-size: 20px;
+}
+
+.stars i {
+    color: #ccc; /* Abu-abu untuk bintang tidak aktif */
+}
